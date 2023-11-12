@@ -1,70 +1,144 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+  # Modal Craft
 
-## Available Scripts
 
-In the project directory, you can run:
+## A React solution for elegantly presenting modals.
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+**Credits**
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+This Modal Craft library is inspired by [jquery-modal](https://github.com/kylefox/jquery-modal) originally created by [kylefox](https://github.com/kylefox). A special thanks to him for the initial concept and implementation.
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+**Introduction:**
 
-### `npm run build`
+Modal Craft is a lightweight, efficient React component for displaying modals. It offers high flexibility and customization options to easily integrate with any project.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+  ## Live Demo
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Check out a live demonstration of this library in action at [Modal Craft Demo](https://elvisgalvez.github.io/modal-craft-demo/).
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+**Why Choose Modal Craft?**
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+There are many modal libraries for React. However, some are bulky and complex to set up. Modal Craft stands out for its ease of use while offering a wide variety of customization options. Moreover, it focuses solely on rendering modals without adding any superfluous features.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+  
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+**Key Features:**
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-## Learn More
+-  **Transition Management**: Modal Craft offers options for controlling the duration and delay of the transition, along with the ability to add your own custom transition.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+-  **Event Listeners**: The component automatically detects when the user presses the "Escape" key, thus facilitating modal closure.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+-  **Customization**: You have full control over the style and classes of the modal, making it easy to perfectly integrate it into your design.
 
-### Code Splitting
+-  **Footer Management**: Whether you want to use default buttons or have an entirely custom footer, Modal Craft is flexible enough to meet your needs.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+  
 
-### Analyzing the Bundle Size
+**Installation:**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Easily install Modal Craft via npm or yarn:
 
-### Making a Progressive Web App
+`npm install modal-craft-lib`
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+or
 
-### Advanced Configuration
+`yarn add modal-craft-lib`
+  
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+**Basic Usage:**
 
-### Deployment
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+Creating a modal is a breeze. You just need to use the `useState` hook to control the opening and closing of the modal:
 
-### `npm run build` fails to minify
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+`import React, { useState } from 'react';
+
+import Modal from 'modal-craft-lib';
+
+const App = () => {
+
+const [isOpen, setIsOpen] = useState(false);
+
+return (
+
+<div>
+
+<button onClick={() => setIsOpen(true)}>Open Modal</button>
+
+<Modal isOpen={isOpen} onClose={() => setIsOpen(false)}>
+
+Your content here.
+
+</Modal>
+
+</div>
+
+);
+
+};`
+
+  
+
+**Advanced Customization:**
+
+
+Modal Craft is designed to be highly customizable. Let's explore some of the ways to tailor it to your specific needs.
+
+
+1.  **Event Management**:
+
+In addition to automatically closing the modal when the user presses the "Escape" key, you can manage other events similarly by adding additional event listeners.
+
+2.  **Custom Transitions**:
+
+You're not limited to the default fade effect. With the `customTransition` prop, you can specify your own CSS transition string, allowing you a wide variety of opening and closing effects.
+
+3.  **Custom Footer**:
+
+The component offers great flexibility in customizing the footer. If you don't need the default buttons or want to add additional elements, use the `renderFooter` prop to define your own footer.
+
+4.  **Custom Styles and Classes**:
+
+With the `style` and `classNames` props, you can easily adapt the look of your modal. Whether you need to override styles or add classes for responsiveness or animations, React Modal has you covered.
+
+5.  **Display Management**:
+
+The display of the modal is controlled by the `isOpen` prop. This means you can easily integrate the modal with other components or logic, such as validation forms or animations.
+
+6.  **Cleanup**:
+
+Modal Craft automatically manages the cleanup of event listeners and timers, ensuring the modal operates smoothly without causing memory leaks.
+
+  
+
+**PropTypes and Validation:**
+
+Prop validation is crucial to ensure that your component works as expected. Modal Craft uses `PropTypes` to make sure the passed props are of the correct type. Here's a summary of the available props:
+
+
+-  `isOpen`: A boolean indicating whether the modal should be displayed.
+
+-  `onClose`: A function called when the modal needs to be closed.
+
+-  `children`: The child elements to display inside the modal.
+
+-  `className` and `classNames`: Strings and objects for adding custom classes to the modal and its child elements.
+
+-  `fadeDuration` and `fadeDelay`: Numbers to control the fade effect of the modal.
+
+-  `customTransition`: A string to define a custom CSS transition.
+
+-  `customButtons`: Nodes to replace or supplement the default buttons in the footer.
+
+-  `style`: An object to override the default styles of the modal.
+
+-  `renderFooter`: A function to customize the modal's footer.
+
+
+**Conclusion:**
+
+Modal Craft is more than just a simple modal library. It's a comprehensive solution for creating exceptional modal experiences in your React apps. Its simplicity combined with its power makes it a must-have choice for all React developers. Try it today and see the difference for yourself!
