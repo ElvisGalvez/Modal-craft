@@ -47,7 +47,7 @@ const Modal = ({
     };
   }, [isOpen, onClose, closeOnEscape]);
 
-  const transitionStyle = customTransition || `opacity ${fadeDuration}s ${fadeDelay}s`;
+  const transitionStyle = customTransition || `opacity ${fadeDuration}s ease ${fadeDelay}s, visibility ${fadeDuration}s ease ${fadeDelay}s`;
 
   const footer = renderFooter ? renderFooter() : (customButtons || <button onClick={onClose} className="close-modal">Close</button>);
 

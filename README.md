@@ -42,11 +42,11 @@ There are many modal libraries for React. However, some are bulky and complex to
 
 Easily install Modal Craft via npm or yarn:
 
-`npm install modal-craft-lib`
+`npm install modal-craft`
 
 or
 
-`yarn add modal-craft-lib`
+`yarn add modal-craft`
   
 
 **Basic Usage:**
@@ -57,7 +57,7 @@ Creating a modal is a breeze. You just need to use the `useState` hook to contro
 
 `import React, { useState } from 'react';
 
-import Modal from 'modal-craft-lib';
+import Modal from 'modal-craft';
 
 const App = () => {
 
