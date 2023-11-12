@@ -26,13 +26,8 @@ const Modal = ({
   };
 
   useEffect(() => {
-    if (isOpen) {
-      setIsShown(true);
-    } else {
-      const timer = setTimeout(() => setIsShown(false), fadeDuration * 1000 * fadeDelay);
-      return () => clearTimeout(timer);
-    }
-  }, [isOpen, fadeDuration, fadeDelay]);
+    setIsShown(isOpen);
+  }, [isOpen]);
 
   useEffect(() => {
     const handleKeyDown = (event) => {
@@ -47,7 +42,7 @@ const Modal = ({
     };
   }, [isOpen, onClose, closeOnEscape]);
 
-  const transitionStyle = customTransition || `opacity ${fadeDuration}s ease ${fadeDelay}s, visibility ${fadeDuration}s ease ${fadeDelay}s`;
+  const transitionStyle = customTransition || `opacity ${fadeDuration}s ease-in-out`;
 
   const footer = renderFooter ? renderFooter() : (customButtons || <button onClick={onClose} className="close-modal">Close</button>);
 
@@ -56,7 +51,7 @@ const Modal = ({
       ref={modalRef}
       onClick={closeModal}
       className={`modal-blocker ${isShown ? 'shown' : 'hidden'} ${className} ${classNames.blocker || ''}`}
-      style={{ transition: transitionStyle, ...style.blocker }}
+      style={{ ...style.blocker, transition: transitionStyle }}
       aria-hidden={!isShown}
       role="dialog"
       aria-modal="true"

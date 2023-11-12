@@ -30,13 +30,8 @@ const Modal = _ref => {
     }
   };
   (0, _react.useEffect)(() => {
-    if (isOpen) {
-      setIsShown(true);
-    } else {
-      const timer = setTimeout(() => setIsShown(false), fadeDuration * 1000 * fadeDelay);
-      return () => clearTimeout(timer);
-    }
-  }, [isOpen, fadeDuration, fadeDelay]);
+    setIsShown(isOpen);
+  }, [isOpen]);
   (0, _react.useEffect)(() => {
     const handleKeyDown = event => {
       if (closeOnEscape && event.keyCode === 27 && isOpen) {
@@ -48,7 +43,7 @@ const Modal = _ref => {
       window.removeEventListener('keydown', handleKeyDown);
     };
   }, [isOpen, onClose, closeOnEscape]);
-  const transitionStyle = customTransition || "opacity ".concat(fadeDuration, "s ").concat(fadeDelay, "s");
+  const transitionStyle = customTransition || "opacity ".concat(fadeDuration, "s ease-in-out");
   const footer = renderFooter ? renderFooter() : customButtons || /*#__PURE__*/_react.default.createElement("button", {
     onClick: onClose,
     className: "close-modal"
@@ -58,8 +53,8 @@ const Modal = _ref => {
     onClick: closeModal,
     className: "modal-blocker ".concat(isShown ? 'shown' : 'hidden', " ").concat(className, " ").concat(classNames.blocker || ''),
     style: {
-      transition: transitionStyle,
-      ...style.blocker
+      ...style.blocker,
+      transition: transitionStyle
     },
     "aria-hidden": !isShown,
     role: "dialog",
